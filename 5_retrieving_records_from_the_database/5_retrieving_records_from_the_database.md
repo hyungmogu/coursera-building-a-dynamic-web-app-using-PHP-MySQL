@@ -6,3 +6,4 @@
 
 1. Inserted database entry can be checked at URL `localhost/phpmyadmin`
 
+#
