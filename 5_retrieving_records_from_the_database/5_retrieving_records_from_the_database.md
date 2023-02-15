@@ -179,8 +179,8 @@ index.php
                     <div class="titleContainer">
                         <span class="nt-title"><?php $note["title"]; ?></span>
                         <div class="nt-links">
-                            <a class="nt-link" href=<?php echo 'edit.php?id=' . $note['id']?>>edit note</a>
-                            <a class="nt-link" href="#">[X] delete note</a>
+                            <a class="nt-link" href=<?php echo 'edit.php?id=' . $note['id'];?>>edit note</a>
+                            <a class="nt-link" href=<?php echo 'delete.php?id=' . $note['id'];?>>[X] delete note</a>
                         </div>                 
                     </div>
                 
@@ -199,4 +199,3 @@ index.php
 
 1. Inserted database entry can be checked at URL `localhost/phpmyadmin`
 
-#
