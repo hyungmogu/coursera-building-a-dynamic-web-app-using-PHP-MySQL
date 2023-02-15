@@ -19,10 +19,32 @@ includes/db.php
 
 ?>
 ```
-<br/>
+
 new.php
 ```
+<?php
+    require_once("includes/db.php");
 
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        $important = $_POST["important"];
+
+        echo $title;
+        echo $content;
+        echo $important;
+    }
+
+    $sql = "INSERT INTO notes (title, content, important) VALUES ('";
+    $sql .= $title "',";
+    $sql .= $content "',";
+    $sql .= $important "'";
+    $sql .= ")";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "success";
+    }
+?>
 ```
 
 ## Aside
