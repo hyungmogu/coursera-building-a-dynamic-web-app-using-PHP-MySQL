@@ -20,6 +20,16 @@
         echo $content;
         echo $important;
     }
+
+    $sql = "INSERT INTO notes (title, content, important) VALUES ('";
+    $sql .= $title "',";
+    $sql .= $content "',";
+    $sql .= $important "'";
+    $sql .= ")";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "success";
+    }
 ?>
 
 <!DOCTYPE html>
