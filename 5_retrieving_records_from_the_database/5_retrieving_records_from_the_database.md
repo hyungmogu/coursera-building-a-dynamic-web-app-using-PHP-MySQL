@@ -151,6 +151,50 @@ index.php
 ?>
 ```
 
+4. `mysqli_fetch_assoc()` function converts fetched SQL result and converts it into associative array containing results
+
+**Example**
+
+index.php
+```
+<?php
+    ...
+    $notes = mysqli_query($conn, $sql);
+?>
+<html>
+    <head>
+        <title>Notes App</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <header> 
+            Notes App
+        </header>
+        <div>
+            <div>
+                <a class="nav-link" href="new.php">Add a new note</a>
+            </div>
+            <?php while($note = mysqli_fetch_assoc($notes)) {?>
+                <div class="note">
+                    <div class="titleContainer">
+                        <span class="nt-title"></span>
+                        <div class="nt-links">
+                            <a class="nt-link" href="#">edit note</a>
+                            <a class="nt-link" href="#">[X] delete note</a>
+                        </div>                 
+                    </div>
+                
+                    <div class="nt-content"></div>
+                </div>
+            <?php }?>
+        </div> 
+    </body>
+</html>
+<?php
+    require_once("includes/footer.php")
+?>
+```
+
 ## Aside
 
 1. Inserted database entry can be checked at URL `localhost/phpmyadmin`
