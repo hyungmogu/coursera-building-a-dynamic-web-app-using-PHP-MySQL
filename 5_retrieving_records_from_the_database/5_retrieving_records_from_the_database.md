@@ -1,4 +1,4 @@
-# Addings Records to Database
+# Retrieving Records from the Database
 
 1. SQL or `Structured Query Language` is used to insert data into database
     - Here, we are using MySQL
