@@ -104,6 +104,13 @@ new.php
 ?>
 ```
 
+3. SQL statement `SELECT <COLUMN_1>, ..., <COLUMN_N> FROM <TABLE_NAME>` is used to retrieve data
+    - Instead of `<COLUMN_1>, ..., <COLUMN_N>`, `*` is used to retrieve values from all columns
+
+```
+SELECT * FROM <TABLE_NAME>
+```
+
 ## Aside
 
 1. Inserted database entry can be checked at URL `localhost/phpmyadmin`
