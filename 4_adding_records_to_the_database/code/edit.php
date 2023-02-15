@@ -1,27 +1,3 @@
-<?php
-    $servername = "localhost";
-    $username = "sqluser";
-    $password = "sqlpass";
-    $dbname = "notes";
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    echo "Connected successfully";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $important = $_POST["important"];
-
-        echo $title;
-        echo $content;
-        echo $important;
-    }
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,7 +12,7 @@
             <div class="backLink"><a class="nav-link" href="index.php"> Home</a></div>
             <div class="head">New Note</div>
     </div>
-    <form action="new.php" method="post">     
+    <form action="edit.php" method="post">     
 
             <span class="label">Title</span>
             <input type="text" name="title" />
@@ -51,5 +27,4 @@
             </div>
             
         <input type="submit" />
-    </form>
 </html>
