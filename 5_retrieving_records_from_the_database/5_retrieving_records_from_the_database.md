@@ -107,11 +107,52 @@ new.php
 3. SQL statement `SELECT <COLUMN_1>, ..., <COLUMN_N> FROM <TABLE_NAME>` is used to retrieve data
     - Instead of `<COLUMN_1>, ..., <COLUMN_N>`, `*` is used to retrieve values from all columns
 
+**Example**
+
+index.php
 ```
-SELECT * FROM <TABLE_NAME>
+<?php
+    require_once("includes/db.php");
+
+    $sql = "SELECT * FROM notes";
+
+    $notes = mysqli_query($conn, $sql);
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notes App</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <header> 
+            Notes App
+        </header>
+        <div>
+                <div>
+                    <a class="nav-link" href="new.php">Add a new note</a>
+                </div>
+                    <div class="note">
+                        <div class="titleContainer">
+                            <span class="nt-title"></span>
+                            <div class="nt-links">
+                                <a class="nt-link" href="#">edit note</a>
+                                <a class="nt-link" href="#">[X] delete note</a>
+                            </div>                 
+                        </div>
+                    
+                         <div class="nt-content"></div>
+                    </div>
+        </div> 
+    </body>
+</html>
+<?php
+    require_once("includes/footer.php");
+?>
 ```
 
 ## Aside
 
 1. Inserted database entry can be checked at URL `localhost/phpmyadmin`
 
+#
