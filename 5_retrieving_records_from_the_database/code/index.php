@@ -1,3 +1,6 @@
+<?php
+    require_once("includes/db.php");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,3 +29,6 @@
         </div> 
     </body>
 </html>
+<?php
+    require_once("includes/footer.php");
+?>

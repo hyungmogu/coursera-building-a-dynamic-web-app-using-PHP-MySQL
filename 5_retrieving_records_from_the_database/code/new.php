@@ -53,3 +53,6 @@
         <input type="submit" />
     </form>
 </html>
+<?php
+    require_once("includes/footer.php");
+?>
