@@ -46,7 +46,7 @@ edit.php
 
 3. For updating, it's put in the same file, separated by if statement
     - `$_SERVER["REQUEST_METHOD"]` is used to determine whether the request method is `POST` or `GET`
-    - `UPDATE <TABLE_NAME> SET <COLUMN_1> = <VALUE_1>, ... , <COLUMN_N> = <VALUE_N>` is used to update table entry
+    - `UPDATE <TABLE_NAME> SET <COLUMN_1> = '<VALUE_1>'', ... , <COLUMN_N> = '<VALUE_N>' WHERE id = <ENTRY_ID>` is used to update table entry
 
 edit.php
 ```
@@ -56,24 +56,30 @@ edit.php
 
     // POST
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id = prep_input($_POST['id']);
         $title = prep_input($_POST['title']);
         $content = prep_input($_POST['content']);
         $important = prep_input($_POST['important']);
+        
+        $sql = "UPDATE notes SET title = '$title', content = '$content', important = '$important' WHERE id = $id LIMIT 1";
 
+        if (mysqli_query($conn, $sql)) {
+            header("Location: index.php");
+        }
     }
 
     // GET
-    if ($_SERVER["REQUEST_METHOD"] == "GET") {
-        if (!isset($_GET["id"])) {
-            header("Location: index.php");
-        }
-
-        $id = $_GET["id"];
-        $sql = "SELECT * FROM notes where id = $id LIMIT 1";
-        $result = mysqli_query($conn, $sql);
-        $note = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
+    if ($_SERVER["REQUEST_METHOD"] != "GET") return;
+    
+    if (!isset($_GET["id"])) {
+        header("Location: index.php");
     }
+
+    $id = $_GET["id"];
+    $sql = "SELECT * FROM notes where id = $id LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+    $note = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
 ?>
 ```
 
@@ -82,6 +88,8 @@ edit.php
 1. Inserted database entry can be checked at URL `localhost/phpmyadmin`
 
 2. `mysqli_sql()` function is used to perform sql query
+    - it returns `true` if query is successful
+    - it returns `false` if query is not successful
 
 ```
 <?php
