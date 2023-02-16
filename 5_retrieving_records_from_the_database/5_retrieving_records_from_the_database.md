@@ -184,7 +184,14 @@ index.php
                         </div>                 
                     </div>
                 
-                    <div class="nt-content"></div>
+                    <div class="nt-content">
+                        <?php if ($note["important"]) {?>
+                            <span class="imp">IMPORTANT</span>
+                        <?php }?>
+                        <p>
+                          <?php echo $note["content"];?>  
+                        </p>
+                    </div>
                 </div>
             <?php }?>
         </div> 
