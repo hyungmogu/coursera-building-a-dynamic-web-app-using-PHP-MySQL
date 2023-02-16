@@ -6,7 +6,7 @@
     }
 
     $id = $_GET["id"];
-    $sql = "DELETE FROM notes WHERE id = $id LIMIT 1";
+    $sql = "DELETE FROM notes WHERE id ='$id' LIMIT 1";
 
     if (mysqli_query($conn, $sql)) {
         header("Location: index.php");

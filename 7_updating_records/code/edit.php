@@ -1,3 +1,16 @@
+<?php
+    require_once("includes/db.php");
+
+    if (!isset($_GET["id"])) {
+        header("Location: index.php");
+    }
+
+    $id = $_GET["id"];
+    $sql = "SELECT * FROM notes WHERE id = $id LIMIT 1";
+    $result = mysql_query($conn, $sql);
+    $note = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,15 +28,15 @@
     <form action="edit.php" method="post">     
 
             <span class="label">Title</span>
-            <input type="text" name="title" />
+            <input type="text" name="title" value="<?php echo $note["title"];?>"/>
             
             <span class="label">Content</span>
-            <textarea name="content"> </textarea>
+            <textarea name="content"><?php echo $note["content"];?></textarea>
 
             <div class="chkgroup">
                 <span class="label-in">Important</span>
                 <input type="hidden" name="important" value="0" />
-                <input type="checkbox" name="important" value="1" />
+                <input type="checkbox" name="important" value="1" <?php if ($note["important"]) {echo "checked";}?>/>
             </div>
             
         <input type="submit" />
