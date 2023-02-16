@@ -1,10 +1,11 @@
 <?php
     require_once("includes/db.php");
+    require_once("includes/functions.php");
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $title = $_POST["title"];
-        $content = $_POST["content"];
-        $important = $_POST["important"];
+        $title = prep_input($_POST["title"]);
+        $content = prep_input($_POST["content"]);
+        $important = prep_input($_POST["important"]);
 
         echo $title;
         echo $content;
